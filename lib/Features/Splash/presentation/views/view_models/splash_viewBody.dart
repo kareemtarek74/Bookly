@@ -1,5 +1,9 @@
+// ignore_for_file: file_names
+
+import 'package:bookly/Features/Home/Data/presentation/views/home_view.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -17,21 +21,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
 
-    animationController1 =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    initSlidingAnimation();
 
-    downAnimation = Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
-        .animate(animationController1);
-
-    animationController2 =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-
-    topAnimation = Tween<Offset>(begin: const Offset(0, -10), end: Offset.zero)
-        .animate(animationController2);
-
-    animationController1.forward();
-
-    animationController2.forward();
+    navigateToHomeView();
   }
 
   @override
@@ -70,6 +62,35 @@ class _SplashViewBodyState extends State<SplashViewBody>
               );
             })
       ],
+    );
+  }
+
+  void initSlidingAnimation() {
+    animationController1 =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+
+    downAnimation = Tween<Offset>(begin: const Offset(0, 10), end: Offset.zero)
+        .animate(animationController1);
+
+    animationController2 =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+
+    topAnimation = Tween<Offset>(begin: const Offset(0, -10), end: Offset.zero)
+        .animate(animationController2);
+
+    animationController1.forward();
+
+    animationController2.forward();
+  }
+
+  void navigateToHomeView() {
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        Get.to(() => const homeView(),
+            transition: Transition.fade,
+            duration: const Duration(milliseconds: 250));
+      },
     );
   }
 }
