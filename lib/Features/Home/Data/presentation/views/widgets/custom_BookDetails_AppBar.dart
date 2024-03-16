@@ -9,17 +9,13 @@ class customBookDetailsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.shopping_cart_outlined))
-          ],
-        ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.shopping_cart_outlined))
+        ],
       ),
     );
   }
