@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:bookly/Features/Home/Data/presentation/views/widgets/custom_BookDetails_AppBar.dart';
+import 'package:bookly/Features/Home/Data/presentation/views/widgets/custom_Rating.dart';
 import 'package:bookly/Features/Home/Data/presentation/views/widgets/custom_listViewItem.dart';
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
@@ -44,6 +45,12 @@ class BookDetailsViewBody extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 18,
+            ),
+            const customRating(
+              mainAxisAlignment: MainAxisAlignment.center,
+            )
           ],
         ),
       ),

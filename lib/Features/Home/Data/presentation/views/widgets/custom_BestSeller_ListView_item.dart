@@ -4,6 +4,7 @@ import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
@@ -52,9 +53,13 @@ class BestSellerListViewItem extends StatelessWidget {
                 const SizedBox(
                   height: 3,
                 ),
-                const Text(
-                  'J.K. Rowling',
-                  style: Styles.textStyle14,
+                Opacity(
+                  opacity: .65,
+                  child: Text(
+                    'J.K. Rowling',
+                    style: Styles.textStyle14
+                        .copyWith(fontWeight: FontWeight.w600),
+                  ),
                 ),
                 const SizedBox(
                   height: 2,
