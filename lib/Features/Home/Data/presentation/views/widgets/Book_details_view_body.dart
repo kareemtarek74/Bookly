@@ -1,10 +1,13 @@
 // ignore_for_file: file_names
 
+import 'package:bookly/Features/Home/Data/presentation/views/widgets/Books_Action.dart';
 import 'package:bookly/Features/Home/Data/presentation/views/widgets/custom_BookDetails_AppBar.dart';
 import 'package:bookly/Features/Home/Data/presentation/views/widgets/custom_Rating.dart';
 import 'package:bookly/Features/Home/Data/presentation/views/widgets/custom_listViewItem.dart';
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/core/utils/widgets/custom_Button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -26,14 +29,14 @@ class BookDetailsViewBody extends StatelessWidget {
               child: const customListViewItem(),
             ),
             const SizedBox(
-              height: 43,
+              height: 26,
             ),
             Text(
               'The Jungle Book',
               style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w500),
             ),
             const SizedBox(
-              height: 6,
+              height: 3,
             ),
             Opacity(
               opacity: .7,
@@ -50,7 +53,11 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             const customRating(
               mainAxisAlignment: MainAxisAlignment.center,
-            )
+            ),
+            const SizedBox(
+              height: 37,
+            ),
+            const BooksAction(),
           ],
         ),
       ),
