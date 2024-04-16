@@ -1,4 +1,4 @@
-import 'package:bookly/Features/Home/Data/presentation/views/widgets/home_view_body.dart';
+import 'package:bookly/Features/Home/presentation/presentation/views/widgets/home_view_body.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types

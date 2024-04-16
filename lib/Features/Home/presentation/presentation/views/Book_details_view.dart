@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:bookly/Features/Home/Data/presentation/views/widgets/Book_details_view_body.dart';
+import 'package:bookly/Features/Home/presentation/presentation/views/widgets/Book_details_view_body.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {

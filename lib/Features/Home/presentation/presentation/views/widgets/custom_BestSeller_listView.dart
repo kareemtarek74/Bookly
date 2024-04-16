@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:bookly/Features/Home/Data/presentation/views/widgets/custom_BestSeller_ListView_item.dart';
+import 'package:bookly/Features/Home/presentation/presentation/views/widgets/custom_BestSeller_ListView_item.dart';
 import 'package:flutter/material.dart';
 
 class BestSellerListView extends StatelessWidget {
