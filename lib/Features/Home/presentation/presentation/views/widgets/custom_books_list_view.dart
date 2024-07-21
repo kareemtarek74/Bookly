@@ -1,4 +1,7 @@
+import 'package:bookly/Features/Home/presentation/presentation/view_models/get_book_cubit/get_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'custom_listViewItem.dart';
 
@@ -8,18 +11,31 @@ class customBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .3,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 6),
-            child: customListViewItem(),
+    return BlocBuilder<GetBooksCubit, GetBooksState>(
+      builder: (context, state) {
+        if (state is GetBooksSuccess) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .3,
+            child: ListView.builder(
+              itemCount: state.books[0].items!.length,
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 6),
+                  child: customListViewItem(
+                      imageUrl: state.books[0].items![index].volumeInfo!
+                          .imageLinks!.thumbnail!),
+                );
+              },
+            ),
           );
-        },
-      ),
+        } else if (state is GetBooksFailure) {
+          return Text(state.errMessage);
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }

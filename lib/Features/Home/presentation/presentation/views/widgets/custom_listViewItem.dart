@@ -2,12 +2,10 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../../../core/utils/assets.dart';
-
 // ignore: camel_case_types
 class customListViewItem extends StatelessWidget {
-  const customListViewItem({super.key});
-
+  const customListViewItem({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -17,8 +15,8 @@ class customListViewItem extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16),
               color: Colors.red,
-              image: const DecorationImage(
-                  fit: BoxFit.fill, image: AssetImage(AssetsData.testimage))),
+              image: DecorationImage(
+                  fit: BoxFit.fill, image: NetworkImage(imageUrl))),
         ),
       ),
     );

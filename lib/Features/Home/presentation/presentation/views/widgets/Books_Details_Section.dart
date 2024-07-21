@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:bookly/Features/Home/Data/models/book_model/book_model.dart';
+import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/styles.dart';
@@ -19,7 +21,9 @@ class booksDetailsSection extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: const customListViewItem(),
+          child: const customListViewItem(
+            imageUrl: AssetsData.testimage,
+          ),
         ),
         const SizedBox(
           height: 24,
