@@ -7,7 +7,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // ignore: camel_case_types
 class customRating extends StatelessWidget {
   const customRating(
-      {super.key, this.mainAxisAlignment = MainAxisAlignment.start});
+      {super.key,
+      this.mainAxisAlignment = MainAxisAlignment.start,
+      required this.rateing});
+  final String rateing;
   final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class customRating extends StatelessWidget {
         const SizedBox(
           width: 6.3,
         ),
-        Text('4.8',
+        Text(rateing,
             style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w800)),
         const SizedBox(
           width: 5,
