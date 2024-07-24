@@ -23,6 +23,6 @@ abstract class AppRouter {
     GoRoute(
       path: '/Search_view',
       builder: (context, state) => const Search_view(),
-    )
+    ),
   ]);
 }

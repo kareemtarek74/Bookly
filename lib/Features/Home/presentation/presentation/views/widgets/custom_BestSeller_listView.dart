@@ -2,6 +2,7 @@
 
 import 'package:bookly/Features/Home/presentation/presentation/view_models/newest_books_cubit/newest_books_cubit_cubit.dart';
 import 'package:bookly/Features/Home/presentation/presentation/views/widgets/custom_BestSeller_ListView_item.dart';
+import 'package:bookly/Features/Home/presentation/presentation/views/widgets/BestSeller_loading_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +33,7 @@ class BestSellerListView extends StatelessWidget {
         } else if (state is NewestBooksCubitFailure) {
           return Text(state.errMessage);
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const bestSeller_LoadingShimmer();
         }
       },
     );

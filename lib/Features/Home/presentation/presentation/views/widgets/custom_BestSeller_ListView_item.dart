@@ -1,5 +1,4 @@
 // ignore_for_file: file_names
-import 'package:bookly/Features/Home/Data/models/book_model/book_model.dart';
 import 'package:bookly/Features/Home/Data/models/book_model/item.dart';
 import 'package:bookly/Features/Home/presentation/presentation/views/widgets/custom_Rating.dart';
 import 'package:bookly/constants.dart';

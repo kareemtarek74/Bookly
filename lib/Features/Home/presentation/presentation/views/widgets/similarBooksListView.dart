@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-import 'package:bookly/Features/Home/Data/models/book_model/book_model.dart';
 import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 

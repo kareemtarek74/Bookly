@@ -1,6 +1,6 @@
 import 'package:bookly/Features/Home/presentation/presentation/view_models/get_book_cubit/get_books_cubit.dart';
+import 'package:bookly/Features/Home/presentation/presentation/views/widgets/BooksList_loading_shimmer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'custom_listViewItem.dart';
@@ -33,7 +33,7 @@ class customBooksListView extends StatelessWidget {
         } else if (state is GetBooksFailure) {
           return Text(state.errMessage);
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const BooksList_loading_shimmer();
         }
       },
     );

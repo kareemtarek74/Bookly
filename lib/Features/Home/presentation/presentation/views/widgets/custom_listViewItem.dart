@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:bookly/Features/Home/presentation/presentation/views/widgets/BooksList_loading_shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class customListViewItem extends StatelessWidget {
             fit: BoxFit.fill,
             errorWidget: (context, url, error) => const Icon(Icons.error),
             placeholder: (context, url) => const Center(
-              child: CircularProgressIndicator(),
+              child: BooksList_loading_shimmer(),
             ),
           ),
         ),
