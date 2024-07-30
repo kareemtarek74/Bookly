@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/Features/Home/Data/models/book_model/item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../../core/utils/styles.dart';
@@ -10,25 +10,29 @@ import 'custom_listViewItem.dart';
 
 // ignore: camel_case_types
 class booksDetailsSection extends StatelessWidget {
-  const booksDetailsSection({super.key});
-
+  const booksDetailsSection({
+    super.key,
+    required this.book,
+  });
+  final Item book;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-
     return Column(
       children: [
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .2),
-          child: const customListViewItem(
-            imageUrl: AssetsData.testimage,
+          child: customListViewItem(
+            imgUrl: book.volumeInfo!.imageLinks!.thumbnail,
           ),
         ),
         const SizedBox(
           height: 24,
         ),
         Text(
-          'The Jungle Book',
+          maxLines: 2,
+          textAlign: TextAlign.center,
+          book.volumeInfo!.title!,
           style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w500),
         ),
         const SizedBox(
@@ -37,7 +41,7 @@ class booksDetailsSection extends StatelessWidget {
         Opacity(
           opacity: .7,
           child: Text(
-            'Rudyard Kipling',
+            book.volumeInfo!.authors![0],
             style: Styles.textStyle18.copyWith(
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w600,

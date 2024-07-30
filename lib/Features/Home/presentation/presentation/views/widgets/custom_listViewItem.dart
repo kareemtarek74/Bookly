@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
 class customListViewItem extends StatelessWidget {
-  const customListViewItem({super.key, required this.imageUrl});
-  final String imageUrl;
+  const customListViewItem({super.key, required this.imgUrl});
+  final String? imgUrl;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,7 +16,7 @@ class customListViewItem extends StatelessWidget {
         child: AspectRatio(
           aspectRatio: 2.7 / 4,
           child: CachedNetworkImage(
-            imageUrl: imageUrl,
+            imageUrl: imgUrl ?? "",
             fit: BoxFit.fill,
             errorWidget: (context, url, error) => const Icon(Icons.error),
             placeholder: (context, url) => const Center(

@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 // ignore: camel_case_types
 class customBookDetailsAppBar extends StatelessWidget {
@@ -12,7 +13,11 @@ class customBookDetailsAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
+          IconButton(
+              onPressed: () {
+                GoRouter.of(context).pop();
+              },
+              icon: const Icon(Icons.close)),
           IconButton(
               onPressed: () {}, icon: const Icon(Icons.shopping_cart_outlined))
         ],

@@ -14,7 +14,7 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
     try {
       emit(NewestBooksCubitLoading());
       final response = await api.get(
-        "/volumes?Filtering=free-ebooks&Sorting=newest &q=programming",
+        "/volumes?Filtering=free-ebooks&q=computer science",
       );
 
       List<BookModel> book = [];

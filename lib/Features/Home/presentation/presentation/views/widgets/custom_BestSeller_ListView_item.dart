@@ -11,11 +11,12 @@ class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key, required this.booky});
 
   final Item booky;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push('/BookDetailsView');
+        GoRouter.of(context).push('/BookDetailsView', extra: booky);
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

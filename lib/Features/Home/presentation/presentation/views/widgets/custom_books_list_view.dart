@@ -2,6 +2,7 @@ import 'package:bookly/Features/Home/presentation/presentation/view_models/get_b
 import 'package:bookly/Features/Home/presentation/presentation/views/widgets/BooksList_loading_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import 'custom_listViewItem.dart';
 
@@ -23,9 +24,15 @@ class customBooksListView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 6),
-                  child: customListViewItem(
-                      imageUrl: state.books[0].items![index].volumeInfo!
-                          .imageLinks!.thumbnail!),
+                  child: GestureDetector(
+                    onTap: () {
+                      GoRouter.of(context).push('/BookDetailsView',
+                          extra: state.books[0].items![index]);
+                    },
+                    child: customListViewItem(
+                        imgUrl: state.books[0].items![index].volumeInfo!
+                            .imageLinks!.thumbnail),
+                  ),
                 );
               },
             ),
