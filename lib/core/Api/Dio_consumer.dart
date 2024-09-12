@@ -91,7 +91,7 @@ void handleDioException(DioError e) {
     case DioErrorType.cancel:
       throw serverException(errModel: ErrorModel.fromJson(e.response!.data));
     case DioErrorType.other:
-      throw serverException(errModel: ErrorModel.fromJson(e.response!.data));
+      throw serverException(errModel: ErrorModel.fromJson(e.response?.data));
     case DioErrorType.response:
       switch (e.response!.statusCode) {
         case 400:

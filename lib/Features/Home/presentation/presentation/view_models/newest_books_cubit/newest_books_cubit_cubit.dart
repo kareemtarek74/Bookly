@@ -3,21 +3,30 @@ import 'package:bookly/Features/Home/Data/models/book_model/book_model.dart';
 import 'package:bookly/core/Api/Api_consumer.dart';
 import 'package:bookly/core/error/exceptions.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 part 'newest_books_cubit_state.dart';
 
 class NewestBooksCubit extends Cubit<NewestBooksState> {
-  NewestBooksCubit(this.api) : super(NewestBooksCubitInitial());
+  NewestBooksCubit(this.api) : super(const NewestBooksCubitInitial());
   final ApiConsumer api;
 
+  TextEditingController searchValue = TextEditingController();
+  List<BookModel> book = [];
+  List<BookModel> searchList = [];
   getNewestBook() async {
     try {
       emit(NewestBooksCubitLoading());
-      final response = await api.get(
-        "/volumes?Filtering=free-ebooks&q=computer science",
-      );
+      final response = searchValue.text.isEmpty
+          ? await api.get(
+              "/volumes?Filtering=free-ebooks&q= computer science",
+            )
+          : {
+              await api.get(
+                "/volumes?Filtering=free-ebooks&q=${searchValue.text}",
+              )
+            };
 
-      List<BookModel> book = [];
       book.add(BookModel.fromJson(response));
 
       emit(NewestBooksCubitSuccess(books: book));

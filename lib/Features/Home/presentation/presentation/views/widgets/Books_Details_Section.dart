@@ -30,7 +30,6 @@ class booksDetailsSection extends StatelessWidget {
           height: 24,
         ),
         Text(
-          maxLines: 2,
           textAlign: TextAlign.center,
           book.volumeInfo!.title!,
           style: Styles.textStyle30.copyWith(fontWeight: FontWeight.w500),
@@ -58,7 +57,9 @@ class booksDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 30,
         ),
-        const BooksAction(),
+        BooksAction(
+          book: book,
+        ),
       ],
     );
   }

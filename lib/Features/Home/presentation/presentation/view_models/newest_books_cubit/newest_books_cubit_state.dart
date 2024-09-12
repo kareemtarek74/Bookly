@@ -7,7 +7,9 @@ sealed class NewestBooksState extends Equatable {
   List<Object> get props => [];
 }
 
-final class NewestBooksCubitInitial extends NewestBooksState {}
+final class NewestBooksCubitInitial extends NewestBooksState {
+  const NewestBooksCubitInitial();
+}
 
 final class NewestBooksCubitLoading extends NewestBooksState {}
 

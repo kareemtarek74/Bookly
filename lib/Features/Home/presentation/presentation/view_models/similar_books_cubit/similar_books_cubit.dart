@@ -16,7 +16,7 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
     try {
       emit(SimilarBooksLoading());
       final response = await api.get(
-        "/volumes?sorting=relevance&Filtering=free-ebooks&q=computer science",
+        "/volumes?sorting=relevance&Filtering=free-ebooks&q=computer science&category=$category",
       );
 
       List<BookModel> book = [];
