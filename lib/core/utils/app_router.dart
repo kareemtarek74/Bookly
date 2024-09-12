@@ -1,3 +1,5 @@
+import 'package:bookly/Features/Authentication/presentation/view/sign_in_screen.dart';
+import 'package:bookly/Features/Authentication/presentation/view/sign_up_screen.dart';
 import 'package:bookly/Features/Home/Data/models/book_model/item.dart';
 import 'package:bookly/Features/Home/presentation/presentation/view_models/similar_books_cubit/similar_books_cubit.dart';
 import 'package:bookly/Features/Home/presentation/presentation/views/Book_details_view.dart';
@@ -21,6 +23,14 @@ abstract class AppRouter {
     GoRoute(
       path: '/HomeView',
       builder: (context, state) => const homeView(),
+    ),
+    GoRoute(
+      path: '/SignInView',
+      builder: (context, state) => const SignInScreen(),
+    ),
+    GoRoute(
+      path: '/SignUpView',
+      builder: (context, state) => const SignUpScreen(),
     ),
     GoRoute(
       path: '/Search_view',

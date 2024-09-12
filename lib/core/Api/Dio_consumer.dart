@@ -1,6 +1,7 @@
 import 'package:bookly/core/Api/Api_consumer.dart';
 import 'package:bookly/core/Api/Api_interceptor.dart';
 import 'package:bookly/core/Api/end_points.dart';
+import 'package:bookly/core/error/Auth_error_model.dart';
 import 'package:bookly/core/error/error_model/error_model..dart';
 import 'package:bookly/core/error/exceptions.dart';
 import 'package:dio/dio.dart';
@@ -9,7 +10,7 @@ class DioConsumer extends ApiConsumer {
   final Dio dio;
 
   DioConsumer({required this.dio}) {
-    dio.options.baseUrl = Endpoints.baseUrl;
+    dio.options.baseUrl = Endpoints.booksUrl;
     dio.interceptors.add(ApiInterceptor());
     dio.interceptors.add(LogInterceptor(
       request: true,
@@ -82,39 +83,56 @@ class DioConsumer extends ApiConsumer {
 void handleDioException(DioError e) {
   switch (e.type) {
     case DioErrorType.connectTimeout:
-      throw serverException(errModel: ErrorModel.fromJson(e.response!.data));
+      throw ServerException(
+          errModel: ErrorModel.fromJson(e.response!.data),
+          authErrorModel: AuthErrorModel.fromJson(e.response!.data));
     case DioErrorType.sendTimeout:
-      throw serverException(errModel: ErrorModel.fromJson(e.response!.data));
+      throw ServerException(
+          errModel: ErrorModel.fromJson(e.response!.data),
+          authErrorModel: AuthErrorModel.fromJson(e.response!.data));
     case DioErrorType.receiveTimeout:
-      throw serverException(errModel: ErrorModel.fromJson(e.response!.data));
+      throw ServerException(
+          errModel: ErrorModel.fromJson(e.response!.data),
+          authErrorModel: AuthErrorModel.fromJson(e.response!.data));
 
     case DioErrorType.cancel:
-      throw serverException(errModel: ErrorModel.fromJson(e.response!.data));
+      throw ServerException(
+          errModel: ErrorModel.fromJson(e.response!.data),
+          authErrorModel: AuthErrorModel.fromJson(e.response!.data));
     case DioErrorType.other:
-      throw serverException(errModel: ErrorModel.fromJson(e.response?.data));
+      throw ServerException(
+          errModel: ErrorModel.fromJson(e.response?.data),
+          authErrorModel: AuthErrorModel.fromJson(e.response!.data));
     case DioErrorType.response:
       switch (e.response!.statusCode) {
         case 400:
-          throw serverException(
-              errModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data),
+              authErrorModel: AuthErrorModel.fromJson(e.response!.data));
         case 401:
-          throw serverException(
-              errModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data),
+              authErrorModel: AuthErrorModel.fromJson(e.response!.data));
         case 403:
-          throw serverException(
-              errModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data),
+              authErrorModel: AuthErrorModel.fromJson(e.response!.data));
         case 404:
-          throw serverException(
-              errModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data),
+              authErrorModel: AuthErrorModel.fromJson(e.response!.data));
         case 409:
-          throw serverException(
-              errModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data),
+              authErrorModel: AuthErrorModel.fromJson(e.response!.data));
         case 422:
-          throw serverException(
-              errModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data),
+              authErrorModel: AuthErrorModel.fromJson(e.response!.data));
         case 500:
-          throw serverException(
-              errModel: ErrorModel.fromJson(e.response!.data));
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data),
+              authErrorModel: AuthErrorModel.fromJson(e.response!.data));
       }
       break;
   }

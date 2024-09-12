@@ -19,18 +19,18 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
       emit(NewestBooksCubitLoading());
       final response = searchValue.text.isEmpty
           ? await api.get(
-              "/volumes?Filtering=free-ebooks&q= computer science",
+              "https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&q= computer science",
             )
           : {
               await api.get(
-                "/volumes?Filtering=free-ebooks&q=${searchValue.text}",
+                "https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&q=${searchValue.text}",
               )
             };
 
       book.add(BookModel.fromJson(response));
 
       emit(NewestBooksCubitSuccess(books: book));
-    } on serverException catch (e) {
+    } on ServerException catch (e) {
       emit(NewestBooksCubitFailure(errMessage: e.errModel.error!.message!));
     }
   }

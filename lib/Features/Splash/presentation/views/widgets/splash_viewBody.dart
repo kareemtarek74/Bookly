@@ -89,7 +89,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
         /*  Get.to(() => const homeView(),
             transition: Transition.fade,
             duration: const Duration(milliseconds: 250)); */
-        GoRouter.of(context).push('/HomeView');
+        GoRouter.of(context).push('/SignInView');
       },
     );
   }

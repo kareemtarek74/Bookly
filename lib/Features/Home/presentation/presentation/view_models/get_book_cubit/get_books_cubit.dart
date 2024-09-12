@@ -14,14 +14,14 @@ class GetBooksCubit extends Cubit<GetBooksState> {
     try {
       emit(GetBooksLoading());
       final response = await api.get(
-        "/volumes?Filtering=free-ebooks&q=programming",
+        "https://www.googleapis.com/books/v1/volumes?Filtering=free-ebooks&q=programming",
       );
 
       List<BookModel> book = [];
       book.add(BookModel.fromJson(response));
 
       emit(GetBooksSuccess(books: book));
-    } on serverException catch (e) {
+    } on ServerException catch (e) {
       emit(GetBooksFailure(errMessage: e.errModel.error!.message!));
     }
   }

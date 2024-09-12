@@ -16,14 +16,14 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
     try {
       emit(SimilarBooksLoading());
       final response = await api.get(
-        "/volumes?sorting=relevance&Filtering=free-ebooks&q=computer science&category=$category",
+        "https://www.googleapis.com/books/v1/volumes?sorting=relevance&Filtering=free-ebooks&q=computer science&category=$category",
       );
 
       List<BookModel> book = [];
       book.add(BookModel.fromJson(response));
 
       emit(SimilarBooksSuccess(books: book));
-    } on serverException catch (e) {
+    } on ServerException catch (e) {
       emit(SimilarBooksFailure(errMessage: e.errModel.error!.message!));
     }
   }
